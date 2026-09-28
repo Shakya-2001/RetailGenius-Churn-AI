@@ -13,26 +13,43 @@ RetailGenius is an AI-based e-commerce customer churn prediction project. The sy
 
 ## Project Structure
 
+```text
 RetailGenius-Churn-AI/
+│
 ├── data/
 │   ├── raw/
+│   │   └── E Commerce Dataset.xlsx
 │   └── processed/
+│
 ├── models/
+│
+├── notebooks/
+│
 ├── outputs/
+│   ├── figures/
 │   ├── mlflow/
 │   └── xai/
+│
 ├── src/
+│   ├── __init__.py
 │   ├── data_preparation.py
 │   ├── feature_engineering.py
 │   ├── train.py
 │   ├── evaluate.py
 │   ├── inference.py
+│   │
 │   └── xai/
+│       ├── __init__.py
 │       └── shap_analysis.py
+│
 ├── tests/
+│
+├── .gitignore
+├── .python-version
+├── main.py
+├── pyproject.toml
 ├── requirements.txt
 ├── requirements-xai.txt
-├── pyproject.toml
 ├── uv.lock
 └── README.md
 
