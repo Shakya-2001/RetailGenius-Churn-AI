@@ -1,7 +1,42 @@
+# Python virtual environments
 .venv/
+.xai-venv/
+
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Environment variables
 .env
+.env.*
+
+# MLflow
 mlruns/
+outputs/mlflow/
+*.db
+
+# Generated XAI outputs
+outputs/xai/
+
+# Trained models
+models/*.joblib
+models/*.pkl
+models/*.pickle
+
+# Generated processed data
+data/processed/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+# Temporary API test files
+request.json
