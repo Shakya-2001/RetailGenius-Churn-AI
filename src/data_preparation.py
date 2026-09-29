@@ -3,7 +3,6 @@ from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-
 # Project paths
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 

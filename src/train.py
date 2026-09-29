@@ -7,7 +7,6 @@ import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from xgboost import XGBClassifier
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"
@@ -87,9 +86,7 @@ def main() -> None:
     # Configure local MLflow tracking.
     MLFLOW_DIR.mkdir(parents=True, exist_ok=True)
 
-    mlflow.set_tracking_uri(
-        f"sqlite:///{MLFLOW_DB_PATH.as_posix()}"
-    )
+    mlflow.set_tracking_uri(f"sqlite:///{MLFLOW_DB_PATH.as_posix()}")
 
     # Create or reuse the MLflow experiment.
     mlflow.set_experiment("RetailGenius-Churn-Prediction")

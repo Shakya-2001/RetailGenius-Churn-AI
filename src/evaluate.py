@@ -12,7 +12,6 @@ from sklearn.metrics import (
     roc_auc_score,
 )
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"

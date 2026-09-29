@@ -7,7 +7,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 PROCESSED_DATA_DIR = PROJECT_ROOT / "data" / "processed"

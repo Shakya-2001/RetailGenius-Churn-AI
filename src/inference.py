@@ -3,7 +3,6 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 MODELS_DIR = PROJECT_ROOT / "models"
@@ -32,9 +31,7 @@ def predict_churn(
 
     prediction = int(model.predict(transformed_data)[0])
 
-    probability = float(
-        model.predict_proba(transformed_data)[0][1]
-    )
+    probability = float(model.predict_proba(transformed_data)[0][1])
 
     return prediction, probability
 

@@ -6,16 +6,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import shap
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 MODEL_PATH = PROJECT_ROOT / "models" / "churn_model.joblib"
-TEST_DATA_PATH = (
-    PROJECT_ROOT / "data" / "processed" / "X_test_transformed.csv"
-)
-FEATURE_NAMES_PATH = (
-    PROJECT_ROOT / "data" / "processed" / "feature_names.json"
-)
+TEST_DATA_PATH = PROJECT_ROOT / "data" / "processed" / "X_test_transformed.csv"
+FEATURE_NAMES_PATH = PROJECT_ROOT / "data" / "processed" / "feature_names.json"
 
 OUTPUT_DIR = PROJECT_ROOT / "outputs" / "xai"
 
@@ -66,17 +61,12 @@ def main():
     # 1. Mean SHAP feature importance
     # ---------------------------------------------------------------
 
-    mean_abs_shap = (
-        pd.DataFrame(
-            {
-                "feature": X_test.columns,
-                "mean_abs_shap": (
-                    abs(shap_values.values).mean(axis=0)
-                ),
-            }
-        )
-        .sort_values("mean_abs_shap", ascending=False)
-    )
+    mean_abs_shap = pd.DataFrame(
+        {
+            "feature": X_test.columns,
+            "mean_abs_shap": (abs(shap_values.values).mean(axis=0)),
+        }
+    ).sort_values("mean_abs_shap", ascending=False)
 
     mean_shap_path = OUTPUT_DIR / "mean_shap.csv"
     mean_abs_shap.to_csv(mean_shap_path, index=False)
@@ -119,9 +109,7 @@ def main():
 
     plt.tight_layout()
 
-    waterfall_path = (
-        OUTPUT_DIR / "waterfall_customer_0.png"
-    )
+    waterfall_path = OUTPUT_DIR / "waterfall_customer_0.png"
 
     plt.savefig(
         waterfall_path,
@@ -200,9 +188,7 @@ def main():
     # 2c. Mean SHAP feature importance plot
     # ---------------------------------------------------------------
 
-    top_mean_shap = mean_abs_shap.head(15).sort_values(
-        "mean_abs_shap"
-    )
+    top_mean_shap = mean_abs_shap.head(15).sort_values("mean_abs_shap")
 
     plt.figure(figsize=(10, 7))
 
@@ -255,9 +241,7 @@ def main():
     # 5. Dependence / scatter plot
     # ---------------------------------------------------------------
 
-    most_important_feature = (
-        mean_abs_shap.iloc[0]["feature"]
-    )
+    most_important_feature = mean_abs_shap.iloc[0]["feature"]
 
     shap.plots.scatter(
         shap_values[:, most_important_feature],
@@ -288,9 +272,7 @@ def main():
 
     print("\nTop 10 features by mean absolute SHAP value:")
 
-    print(
-        mean_abs_shap.head(10).to_string(index=False)
-    )
+    print(mean_abs_shap.head(10).to_string(index=False))
 
     print("\nXAI analysis completed successfully.")
 
